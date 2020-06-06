@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ blog_type_views.type_name }}</title>
+</head>
+<body>
+    <div>
+    <a href="{% url 'home' %}"><h1>个人博客</h1></a>
+    </div>
+    <hr>
+    <p>一共有{{ blogs_views|length }}篇博客</p>
+    <p>另一种表达，一共有{{ blogs_views_count }}篇博客</p>
+    <h3>{{ blog_type_views.type_name }}</h3>
+    {% for blog_views in blogs_views %}
+        <div>
+        <a href="{% url 'blog_detail_url' blog_views.id %}"><h2>{{ blog_views.title }}</h2></a>
+        </div>
+{#        过滤紫薯#}
+        <p>{{ blog_views.content|truncatechars_html:30 }}</p>
+    {#如果无则空值#}
+    {% empty %}
+        <p>暂无内容</p>
+    {% endfor %}
+
+
+</body>
+</html>

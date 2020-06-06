@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for article in art_list%}
+        {#    <a href="/article/{{ article.id }}">{{ article.title }}</a>  优化前#}
+        <a href="{%url 'article_detail_url' article.id %}"> {{ article.title }}</a>
+
+    {% endfor %}
+</body>
+</html>
